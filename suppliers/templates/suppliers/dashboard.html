@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+
+{% block extrahead %}
+    <title>Suppliers</title>
+{% endblock extrahead %}
+
+
+
+{% block content %}
+
+<h1>Dashboard</h1>
+<a href="{% url 'suppliers' %}">Suppliers</a>
+<a href="{% url 'customers' %}">Customers</a>
+<a href="{% url 'books' %}">Books</a>
+<a href="{% url 'settings' %}">Settings</a>
+<a href="{% url 'account' %}">Accounting</a>
+
+
+{% endblock content %}  
+  
+
+
+
+
+ 

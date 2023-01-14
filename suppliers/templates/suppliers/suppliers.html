@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+
+
+{% block title %}
+Suppliers
+{% endblock title %}
+
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/suppliers.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<h3>Add supplier</h3>
+<form action="" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="" id="" value="Add Supplier">
+</form>
+<h3>Suppliers</h3>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Supplier Type</th>
+  </tr>
+
+  {% if suppliers %}
+  {% for supplier in suppliers %}
+  <tr>
+    <td>{{supplier.name}}</td>
+    <td>{{supplier.address}}</td>
+    <td>{{supplier.phone}}</td>
+    <td>{{supplier.type}}</td>
+  </tr>
+  {% endfor %}
+
+  {% else %}
+  <p>There are no suppliers' records.</p>
+  {% endif %}
+</table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+em{
+    color: orangered;
+}
+
+.alert{
+    background-color: rgb(35, 185, 245);
+    color: white;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    padding:0 1em;
+    top:2em;
+    left: 50%;
+    width: fit-content;
+}
