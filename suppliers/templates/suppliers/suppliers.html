@@ -20,6 +20,7 @@ Suppliers
 </form>
 <h3>Suppliers</h3>
 
+{% if suppliers %}
 <table style="width:100%">
   <tr>
     <th>Name</th>
@@ -28,7 +29,6 @@ Suppliers
     <th>Supplier Type</th>
   </tr>
 
-  {% if suppliers %}
   {% for supplier in suppliers %}
   <tr>
     <td>{{supplier.name}}</td>
@@ -37,11 +37,10 @@ Suppliers
     <td>{{supplier.type}}</td>
   </tr>
   {% endfor %}
-
-  {% else %}
-  <p>There are no suppliers' records.</p>
-  {% endif %}
 </table>
+{% else %}
+<p>There are no suppliers' records.</p>
+{% endif %}
 
 
 

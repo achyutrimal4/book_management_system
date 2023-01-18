@@ -5,10 +5,57 @@
 Account
 {% endblock title %}
 
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/suppliers.css' %}">
+{% endblock styles %}
 
 
 {% block content %}
 <h3>Account</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add Bill">
+</form>
+
+<h3>Ledger</h3>
+{% if bills %}
+<table style="width:100%">
+    <tr>
+      <th>Customer Name</th>
+      <th>PAN</th>
+      <th>Book Name</th>
+      <th>Book ISBN</th>
+      <th>Buying Cost</th>
+      <th>Selling Price</th>
+      <th>Profit/Loss</th>
+      <th>Sold On</th>
+</tr>
+  
+    {% for bill in bills %}
+    <tr>
+      <td>{{bill.customer.name}}</td>
+      <td>{{bill.customer.pan}}</td>
+      <td>{{bill.book.name}}</td>
+      <td>{{bill.book.isbn}}</td>
+      <td>Rs. {{bill.book.price}}</td>
+      <td>Rs. {{bill.price}}</td>
+      {% if bill.profit_loss > 0 %}
+      <td style="color: green;"> Rs. {{bill.profit_loss}}</td>
+      {% elif bill.profit_loss == 0 %}
+      <td style="color: blue;"> Rs. {{bill.profit_loss}}</td>
+      {% else %}
+      <td style="color: red;">Rs. {{bill.profit_loss}}</td>
+      {% endif %}
+      <td>{{bill.sold_on}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% else %}
+<p>No bills' records</p>
+{% endif %} 
 
 
 {% endblock content %}

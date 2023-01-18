@@ -13,13 +13,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Customer',
+            name='Books',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, unique=True)),
                 ('name', models.CharField(max_length=250)),
-                ('pan', models.CharField(max_length=250)),
-                ('address', models.CharField(max_length=250)),
-                ('phone', models.CharField(max_length=20)),
+                ('purchase_date', models.DateField(verbose_name='Date of Purchase')),
+                ('isbn', models.CharField(max_length=250)),
+                ('price', models.FloatField(verbose_name='Price')),
                 ('created', models.DateTimeField(auto_now_add=True, null=True)),
             ],
         ),

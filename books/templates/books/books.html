@@ -5,10 +5,43 @@
 Books
 {% endblock title %}
 
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/books.css' %}">
+{% endblock styles %}
 
 
 {% block content %}
-<h3>Add Books</h3>
+<h3>Add books</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" id="" value="Add Book">
+</form>
+
+
+<h3>Books</h3>
+{% if books %}
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Date of Purchase</th>
+    <th>ISBN</th>
+    <th>Price</th>
+  </tr>
+
+  {% for book in books %}
+  <tr>
+    <td>{{book.name}}</td>
+    <td>{{book.purchase_date}}</td>
+    <td>{{book.isbn}}</td>
+    <td>Rs. {{book.price}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>There are no books' records.</p>
+{% endif %}
 
 
 {% endblock content %}
